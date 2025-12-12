@@ -144,6 +144,11 @@ This project demonstrates the construction of a **relational star‑schema data 
 - **Product_Dim:** Category → Subcategory → ProductName
 
 ---
+## 🔗 Data Sources
+Here are the original data sources used in this project:
+
+- **Datasets File** – [Click to Navigate](https://github.com/Deepvejpara/PowerBi_Data_Modeler/tree/main/Datasets)
+
 
 ## 🧪 Verification Step
 
