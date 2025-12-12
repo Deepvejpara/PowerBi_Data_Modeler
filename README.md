@@ -11,13 +11,6 @@ This project demonstrates the construction of a **relational star‑schema data 
 
 ---
 
-## 📌 Added Topic: Schema Design
-
-- Create a **Star Schema** using *Sales_Fact* as the central fact table.
-- Model **Returns_Fact** either as part of a *Snowflake* or a second **Fact Table**, based on your design logic.
-- Demonstrate understanding of **1:Many, Many:1, and 1:1** cardinality.
-
----
 
 ## 🔗 Relationship Types (Summary)
 
@@ -38,11 +31,6 @@ This project demonstrates the construction of a **relational star‑schema data 
 - Example: Students ↔ Courses.
 - Usually resolved using a **bridge table**.
 
----
-
-- Create a **Star Schema** using *Sales_Fact* as the central fact table.
-- Model **Returns_Fact** either as part of a *Snowflake* or a second **Fact Table**, based on your design logic.
-- Demonstrate understanding of **1:Many, Many:1, and 1:1** cardinality.
 
 ---
 
@@ -117,7 +105,7 @@ This project demonstrates the construction of a **relational star‑schema data 
 
 ### ⭐ Star Schema Model Screenshot
 
-![Star Schema Model](3.5.png)
+![Report Preview](9.png)
 
 ---
 
@@ -125,7 +113,6 @@ This project demonstrates the construction of a **relational star‑schema data 
 
 ### ✔ Sales Matrix, Returns Analysis & Segment Revenue
 
-![Report Preview](9.png)
 ![Report Preview 2](10.png)
 
 ---
