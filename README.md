@@ -1,5 +1,11 @@
 # 📊 Data Modeler — Normalized Star Schema (Power BI)
 
+
+![Power BI](https://img.shields.io/badge/Tool-Power%20BI-yellow)
+![Version](https://img.shields.io/badge/Version-1.0-blue)
+
+![Model](https://img.shields.io/badge/Schema-Star_Model-orange)
+
 This project demonstrates the construction of a **relational star‑schema data model** in Power BI using multiple Excel‑based dimension and fact tables. The goal is to showcase understanding of:
 
 - Table relationships
