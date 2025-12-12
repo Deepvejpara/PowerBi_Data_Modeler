@@ -1,112 +1,161 @@
-# 📊 Data Modeler -- Normalized Star Schema (Power BI)
+# 📊 Data Modeler — Normalized Star Schema (Power BI)
 
-This project demonstrates the construction of a **relational star-schema
-data model** in Power BI using multiple Excel-based dimension and fact
-tables.
-The primary objective is to showcase your understanding of:
+This project demonstrates the construction of a **relational star‑schema data model** in Power BI using multiple Excel‑based dimension and fact tables. The goal is to showcase understanding of:
 
--   Table relationships
--   Cardinality & cross-filter directions
--   Star vs. Snowflake modeling
--   Handling inactive/ambiguous relationships
--   Data categories & hierarchies
--   Model View + Power Query logic
+- Table relationships
+- Cardinality & cross‑filter directions
+- Star vs. Snowflake modeling
+- Handling inactive/ambiguous relationships
+- Data categories & hierarchies
+- Model View + Power Query logic
+
+---
+
+## 📌 Added Topic: Schema Design
+
+- Create a **Star Schema** using *Sales_Fact* as the central fact table.
+- Model **Returns_Fact** either as part of a *Snowflake* or a second **Fact Table**, based on your design logic.
+- Demonstrate understanding of **1:Many, Many:1, and 1:1** cardinality.
+
+---
+
+## 🔗 Relationship Types (Summary)
+
+### **1️⃣ One-to-One (1:1)**
+- One record in Table A matches **exactly one** record in Table B.
+- Example: One employee → one ID card.
+
+### **2️⃣ One-to-Many (1:M)**
+- One record in Table A relates to **multiple** records in Table B.
+- Example: One customer → many sales.
+
+### **3️⃣ Many-to-One (M:1)**
+- Same as 1:M but viewed from the other direction.
+- Many sales rows → one product.
+
+### **4️⃣ Many-to-Many (M:M)**
+- Records in both tables can match multiple rows in each other.
+- Example: Students ↔ Courses.
+- Usually resolved using a **bridge table**.
+
+---
+
+- Create a **Star Schema** using *Sales_Fact* as the central fact table.
+- Model **Returns_Fact** either as part of a *Snowflake* or a second **Fact Table**, based on your design logic.
+- Demonstrate understanding of **1:Many, Many:1, and 1:1** cardinality.
+
+---
 
 ## 📁 Dataset Overview
 
 ### 1. Sales_Fact.xlsx
-
--   SalesID (PK)
--   CustomerID (FK)
--   ProductID (FK)
--   RegionID (FK)
--   DateKey (FK)
--   Quantity
--   Revenue
--   Discount
+- SalesID (PK)
+- CustomerID (FK)
+- ProductID (FK)
+- RegionID (FK)
+- DateKey (FK)
+- Quantity
+- Revenue
+- Discount
 
 ### 2. Customer_Dim.xlsx
-
--   CustomerID (PK)
--   FullName
--   Age
--   Gender
--   Segment
+- CustomerID (PK)
+- FullName
+- Age
+- Gender
+- Segment
 
 ### 3. Product_Dim.xlsx
-
--   ProductID (PK)
--   ProductName
--   Category
--   Subcategory
--   Brand
+- ProductID (PK)
+- ProductName
+- Category
+- Subcategory
+- Brand
 
 ### 4. Region_Dim.xlsx
-
--   RegionID (PK)
--   Country
--   State
--   City
+- RegionID (PK)
+- Country
+- State
+- City
 
 ### 5. Date_Dim.xlsx
-
--   DateKey (PK)
--   Date
--   Month
--   Quarter
--   Year
--   Fiscal Year
+- DateKey (PK)
+- Date
+- Month
+- Quarter
+- Year
+- Fiscal Year
 
 ### 6. Returns_Fact.xlsx
+- ReturnID (PK)
+- SalesID (FK → Sales_Fact)
+- ReturnDateKey (FK → Date_Dim)
+- Reason
 
--   ReturnID (PK)
--   SalesID (FK → Sales_Fact)
--   ReturnDateKey (FK → Date_Dim)
--   Reason
+---
 
 ## 📌 Project Tasks
 
 ### 1. Model Construction & Relationships
 
--   Import all files using **Power Query**.
--   Apply correct data types and remove null/blank rows.
--   Load cleaned tables into the **Data Model**.
--   Define **Primary Keys** and **Foreign Keys** manually.
+- Import all files using **Power Query**.
+- Apply correct data types and remove blank rows.
+- Load cleaned tables into the **Data Model**.
+- Define **Primary Keys** and **Foreign Keys**.
 
-#### Create the following relationships:
+#### Required Relationships:
+- Sales_Fact → Customer_Dim
+- Sales_Fact → Product_Dim
+- Sales_Fact → Region_Dim
+- Sales_Fact → Date_Dim
+- Returns_Fact → Sales_Fact
+- Returns_Fact → Date_Dim *(inactive relationship for ReturnDateKey)*
 
--   Sales_Fact → Customer_Dim
--   Sales_Fact → Product_Dim
--   Sales_Fact → Region_Dim
--   Sales_Fact → Date_Dim
--   Returns_Fact → Sales_Fact
--   Returns_Fact → Date_Dim *(inactive relationship for ReturnDateKey)*
+---
+
+## 🗂 Data Model Preview
+
+### ⭐ Star Schema Model Screenshot
+
+![Star Schema Model](3.5.png)
+
+---
+
+## 📊 Report Preview Screenshots
+
+### ✔ Sales Matrix, Returns Analysis & Segment Revenue
+
+![Report Preview](9.png)
+![Report Preview 2](10.png)
+
+---
 
 ## ⚙️ Advanced Model Settings
 
--   Set correct **relationship cardinality** and **cross-filter
-    direction** (mostly single).
--   Enable **bidirectional filters** only where necessary.
--   Simulate **inactive relationships** using Returns_Fact.
--   Resolve **filter ambiguity**.
+- Set correct **cardinality** and **cross‑filter direction**.
+- Use **bidirectional filters** only when needed.
+- Keep ambiguous relationships under control.
+- Use inactive relationships for scenario modeling.
+
+---
 
 ## ✨ Data Model Enhancements
 
 ### ✔ Data Formatting
-
--   Apply correct data types (currency, whole numbers, dates).
--   Set **Data Categories** (City, Country, ProductName).
+- Convert columns to correct data types (currency, whole numbers, dates).
+- Set **Data Categories** (City, Country, ProductName).
 
 ### ✔ Build Hierarchies
+- **Date_Dim:** Year → Quarter → Month → Date
+- **Region_Dim:** Country → State → City
+- **Product_Dim:** Category → Subcategory → ProductName
 
--   **Date_Dim:** Year → Quarter → Month → Date
--   **Region_Dim:** Country → State → City
--   **Product_Dim:** Category → Subcategory → ProductName
+---
 
 ## 🧪 Verification Step
 
-Use a **Matrix Table** to verify:
+Use a **Matrix Table** to validate:
+- Sales grouped by Product Category and Region
+- Return reasons by Fiscal Year
+- Revenue by Customer Segment
 
--   Sales grouped by Product Category and Region
--   Return reasons by Fiscal Year
--   Revenue by Customer Segment
